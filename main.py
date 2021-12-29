@@ -1,7 +1,17 @@
 import pandas as pd
 
 
-def open_file():
+def create_new_df():
+    data = {'Alumni number': [name]}
+    print(data)
+
+    #new_df = pd.DataFrame(data, columns=['Alumni number'])
+    #new_df.to_csv('new_df.csv')
+
+
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+
     df = pd.read_excel(r'C:\Users\Gameslay\Documents\GitHub\excel-manipulation\gecko_export_template.xlsx', usecols='A:N')  # convert excel to dataframe
 
     # assign variables to columns
@@ -20,9 +30,10 @@ def open_file():
     employer = df['Employer\'s name']
     industry = df['Industry']
 
-    print(alumni_number)
+    address_import_id = 1  # insert date (291221-01)
+    import_id = None
+    phone_type = 'mobile updated'
+    email_type = 'email updated'
+    linkedin_type = 'LinkedIn updated'
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    open_file()
+    create_new_df()
