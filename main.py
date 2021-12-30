@@ -1,6 +1,13 @@
 import pandas as pd
 
 
+def create_phone_addr_imp_id():
+    df_length = (len(df.index))
+
+    for i in range(df_length):
+
+
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
 
@@ -22,11 +29,12 @@ if __name__ == '__main__':
     employer = df['Employer\'s name']
     industry = df['Industry']
 
-    address_import_id = 1  # insert date (291221-01)
+    PhoneAddrImpID = 1  # insert date (291221-01)
     import_id = None
     phone_type = 'mobile updated'
     email_type = 'email updated'
     linkedin_type = 'LinkedIn updated'
 
-    new_df = pd.DataFrame(df, columns=['Alumni number', 'Email address'])
-    print(new_df)
+    create_phone_addr_imp_id()
+
+    new_df = pd.DataFrame(df, columns=['Alumni number', 'Email address', phone_type])
