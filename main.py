@@ -1,14 +1,6 @@
 import pandas as pd
 
 
-def create_new_df():
-    data = {'Alumni number': [name]}
-    print(data)
-
-    #new_df = pd.DataFrame(data, columns=['Alumni number'])
-    #new_df.to_csv('new_df.csv')
-
-
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
 
@@ -36,4 +28,5 @@ if __name__ == '__main__':
     email_type = 'email updated'
     linkedin_type = 'LinkedIn updated'
 
-    create_new_df()
+    new_df = pd.DataFrame(df, columns=['Alumni number', 'Email address'])
+    print(new_df)
