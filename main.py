@@ -1,11 +1,28 @@
 import pandas as pd
+import datetime
 
 
-def create_phone_addr_imp_id():
-    df_length = (len(df.index))
+# create unique ID for each row using current date
+def create_addr_imp_id():
+    rows = []
+    counter = 0
+    date = datetime.datetime.now().strftime('%d%m%y')
 
-    for i in range(df_length):
+    for i in range(len(df.index)):
+        counter += 1
+        addr_imp_id = date + '-' + str(counter)
+        rows.append(addr_imp_id)
+    addr_imp_id = pd.DataFrame(rows)
+    return addr_imp_id
 
+
+# populate each row with comment if mobile given
+def create_phone_type_id():
+    rows = []
+    for i in range(len(df.index)):
+        rows.append('mobile updated')
+    phone_type_id = pd.DataFrame(rows)
+    return phone_type_id
 
 
 # Press the green button in the gutter to run the script.
@@ -13,28 +30,11 @@ if __name__ == '__main__':
 
     df = pd.read_excel(r'C:\Users\Gameslay\Documents\GitHub\excel-manipulation\gecko_export_template.xlsx', usecols='A:N')  # convert excel to dataframe
 
-    # assign variables to columns
-    alumni_number = df['Alumni number']
-    name = df['Full name']
-    email = df['Email address']
-    phone = df['Telephone']
-    linkedin = df['LinkedIn URL']
-    address = df['Address']
-    address1 = df['Address_1']
-    address2 = df['Address_2']
-    address3 = df['Address_3']
-    address4 = df['Address_4']
-    address5 = df['Address_5']
-    job_title = df['Job title']
-    employer = df['Employer\'s name']
-    industry = df['Industry']
+    new_df = pd.DataFrame(df, columns=['Alumni number', 'Email address'])
+    new_df['PhoneAddrImpID'] = create_addr_imp_id()
+    new_df['PhoneImpID'] = None
+    new_df['Phone Type'] = create_phone_type_id()
 
-    PhoneAddrImpID = 1  # insert date (291221-01)
-    import_id = None
-    phone_type = 'mobile updated'
-    email_type = 'email updated'
-    linkedin_type = 'LinkedIn updated'
-
-    create_phone_addr_imp_id()
-
-    new_df = pd.DataFrame(df, columns=['Alumni number', 'Email address', phone_type])
+    # view full dataframe
+    pd.set_option("display.max_rows", None, "display.max_columns", None)
+    print(new_df)
