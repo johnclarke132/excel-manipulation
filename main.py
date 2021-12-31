@@ -28,13 +28,18 @@ def create_phone_type_id():
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
 
-    df = pd.read_excel(r'C:\Users\Gameslay\Documents\GitHub\excel-manipulation\gecko_export_template.xlsx', usecols='A:N')  # convert excel to dataframe
+    # convert excel to dataframe
+    df = pd.read_excel(r'C:\Users\Gameslay\Documents\GitHub\excel-manipulation\gecko_export_template.xlsx', dtype=str, usecols='A:N')
 
-    new_df = pd.DataFrame(df, columns=['Alumni number', 'Email address'])
-    new_df['PhoneAddrImpID'] = create_addr_imp_id()
-    new_df['PhoneImpID'] = None
-    new_df['Phone Type'] = create_phone_type_id()
+    # create column data and add to dataframe
+    df = pd.DataFrame(df, columns=['Alumni number', 'Email address', 'Telephone', 'LinkedIn URL'])
+    df['PhoneAddrImpID'] = create_addr_imp_id()
+    df['PhoneImpID'] = None
+    df['Phone Type'] = create_phone_type_id()
+
+    # rearrange dataframe into desired output
+    df = df[['Alumni number', 'Email address', 'PhoneAddrImpID', 'PhoneImpID', 'Phone Type', 'Telephone', 'LinkedIn URL']]
 
     # view full dataframe
     pd.set_option("display.max_rows", None, "display.max_columns", None)
-    print(new_df)
+    print(df)
