@@ -17,10 +17,10 @@ def create_addr_imp_id():
 
 
 # populate each row with comment if mobile given
-def create_phone_type_id():
+def create_phone_type_id(update_type):
     rows = []
     for i in range(len(df.index)):
-        rows.append('mobile updated')
+        rows.append(update_type)
     phone_type_id = pd.DataFrame(rows)
     return phone_type_id
 
@@ -35,10 +35,15 @@ if __name__ == '__main__':
     df = pd.DataFrame(df, columns=['Alumni number', 'Email address', 'Telephone', 'LinkedIn URL'])
     df['PhoneAddrImpID'] = create_addr_imp_id()
     df['PhoneImpID'] = None
-    df['Phone Type'] = create_phone_type_id()
+    df['Phone Type 1'] = create_phone_type_id('email updated')
+    df['Phone Type 2'] = create_phone_type_id('mobile updated')
+    df['Phone Type 3'] = create_phone_type_id('LinkedIn updated')
 
     # rearrange dataframe into desired output
-    df = df[['Alumni number', 'Email address', 'PhoneAddrImpID', 'PhoneImpID', 'Phone Type', 'Telephone', 'LinkedIn URL']]
+    df = df[['Alumni number',
+             'Email address', 'PhoneAddrImpID', 'PhoneImpID', 'Phone Type 1',
+             'Telephone', 'PhoneAddrImpID', 'PhoneImpID', 'Phone Type 2',
+             'LinkedIn URL', 'PhoneAddrImpID', 'PhoneImpID', 'Phone Type 3']]
 
     # view full dataframe
     pd.set_option("display.max_rows", None, "display.max_columns", None)
