@@ -32,18 +32,20 @@ if __name__ == '__main__':
     df = pd.read_excel(r'C:\Users\Gameslay\Documents\GitHub\excel-manipulation\gecko_export_template.xlsx', dtype=str, usecols='A:N')
 
     # create column data and add to dataframe
-    df = pd.DataFrame(df, columns=['Alumni number', 'Email address', 'Telephone', 'LinkedIn URL'])
+    df = pd.DataFrame(df, columns=['Alumni number', 'Email address', 'Telephone', 'LinkedIn URL', 'Address', 'Address_1', 'Address_2'])
     df['PhoneAddrImpID'] = create_addr_imp_id()
     df['PhoneImpID'] = None
     df['Phone Type 1'] = create_phone_type_id('email updated')
     df['Phone Type 2'] = create_phone_type_id('mobile updated')
     df['Phone Type 3'] = create_phone_type_id('LinkedIn updated')
+    df['AddrLines'] = df['Address'] + df['Address_1'] + df['Address_2']
 
     # rearrange dataframe into desired output
     df = df[['Alumni number',
              'Email address', 'PhoneAddrImpID', 'PhoneImpID', 'Phone Type 1',
              'Telephone', 'PhoneAddrImpID', 'PhoneImpID', 'Phone Type 2',
-             'LinkedIn URL', 'PhoneAddrImpID', 'PhoneImpID', 'Phone Type 3']]
+             'LinkedIn URL', 'PhoneAddrImpID', 'PhoneImpID', 'Phone Type 3',
+             'AddrLines']]
 
     # view full dataframe
     pd.set_option("display.max_rows", None, "display.max_columns", None)
