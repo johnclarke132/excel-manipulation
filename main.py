@@ -25,6 +25,10 @@ def create_phone_type_id(update_type):
     return phone_type_id
 
 
+def create_address(main_df):
+    return main_df['Address'] + main_df['Address_1'] + main_df['Address_2']
+
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
 
@@ -38,7 +42,7 @@ if __name__ == '__main__':
     df['Phone Type 1'] = create_phone_type_id('email updated')
     df['Phone Type 2'] = create_phone_type_id('mobile updated')
     df['Phone Type 3'] = create_phone_type_id('LinkedIn updated')
-    df['AddrLines'] = df['Address'] + df['Address_1'] + df['Address_2']
+    df['AddrLines'] = create_address(df)
 
     # rearrange dataframe into desired output
     df = df[['Alumni number',
