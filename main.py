@@ -26,7 +26,7 @@ def create_phone_type_id(update_type):
 
 
 def create_address(main_df):
-    return main_df['Address'] + main_df['Address_1'] + main_df['Address_2']
+    return main_df['Address'] + '/n' + main_df['Address_1'] + '/n' + main_df['Address_2']
 
 
 # Press the green button in the gutter to run the script.
